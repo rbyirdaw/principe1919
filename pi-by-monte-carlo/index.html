@@ -1,0 +1,50 @@
+<!doctype HTML>
+<html>
+  <head>
+    <title>Pi by Monte Carlo</title>
+    <link rel="stylesheet" href="../stylesheets/sim.css">
+    <script src="mc-pi.js"></script>
+
+  </head>
+
+  <body onload="init()">
+    <header>
+      <h2>Pi by Monte Carlo</h2>
+    </header>
+
+    <section class="sim-holder">
+      <div class="sim-canvas">
+        <canvas id="mcpi-canvas" width="300" height="300">
+          canvas space
+        </canvas>
+
+      <div class="sim-controls">
+        <input class="btn-style" type="button" id="startStopBtn" value="Start" onClick="toggleAnim()">
+	<input class="btn-style clearBtn" type="button" id="clearBtn" value="Clear" onClick="clearAnim()">
+      </div>
+      <table class="sim-results">
+        <tr>
+	  <th>Points inside quarter circle</th>
+	  <td><input type="number" id="hits" value="0" readonly></td>
+	</tr>
+	<tr>
+	  <th>Total number of points</th>
+	  <td><input type="number" id="total-points" value="0" readonly></td>
+	</tr>
+	<tr>
+	  <th>PI by Monte Carlo</th>
+	  <td><input type="number" id="mc-pi" value="0" readonly></td>
+	</tr>
+	<tr>
+	  <th>PI</th>
+	  <td>3.1415927</td>
+	</tr>
+      </table>
+
+      
+    </section>
+
+  </body>
+
+</html>
+

@@ -1,0 +1,112 @@
+
+/*sim canvas*/
+canvas{
+	border: solid 2px #a9a9a9;	
+	display: block;
+	margin: 0 auto;
+}
+
+.sim-holder{
+	/*width: 400px;*/
+	margin: 0 auto;
+}
+
+/*Controls*/
+.sim-controls{
+	padding: 20px 0;
+	margin: 0 auto;
+	width: 300px;
+}
+
+.btn-style {
+	display: inline-block;
+	border: 0px;
+	border-radius: 7px;
+	
+	margin: 0px;
+	padding: 10px 30px;
+
+	color: #888;
+	background: #444;
+	
+	cursor: pointer;
+	font-weight: 400;
+	font-family: consolas, arial;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	font-size: 18px;
+	
+}
+.btn-style:hover{
+	color: #000;
+}
+
+.clearBtn{
+	float: right;
+}
+
+
+/*Results*/
+
+.sim-results:first-of-type{
+	margin-bottom: 25px;
+}
+table{
+	margin: 0 auto;
+}
+td, th{
+  border-bottom: 1px solid #dde0e5;
+}
+.table-break{
+  border-top: 3px double #dde0e5;
+  border-bottom: 0;
+}
+
+td, th, .sim-results input{
+	font-family: Arial;
+	font-size: 18px;
+	font-weight: 200;
+	color: #333;	
+}
+th{
+	text-align: right;
+	padding-top: 1px;
+	padding-right: 10px;
+}
+.th-row{
+	text-align: center;
+}
+td{
+	height: 30px;
+	text-align: center;	
+}
+th,td{
+	min-width: 100px;
+}
+.sim-results input{
+	height: 100%;
+	width: 100px;
+	text-align: center;
+	border: none;
+	padding: 0;
+	margin: 0;
+}
+
+
+.trSelected {
+	background-color: #fa8072;
+}
+
+
+input[type=number]{
+	-moz-appearance: textfield;
+}
+/*The following removes scroll arrows on chrome
+ *which will take space on right even if readonly.
+ */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button{
+	-webkit-appearance: none;
+	margin: 0;
+}
+
