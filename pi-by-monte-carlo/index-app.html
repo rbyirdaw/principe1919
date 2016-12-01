@@ -20,7 +20,7 @@
         </canvas>
 
       <div class="sim-controls">
-        <input class="btn-style" type="button" id="startStopBtn" value="Start" ng-click="startStopSim()">
+        <input class="btn-style" type="button" id="startStopBtn" value="{{simRunning ? 'Stop' : 'Start'}}" ng-click="startStopSim()">
 	<input class="btn-style clearBtn" type="button" id="clearBtn" value="Clear" ng-click="clearSim()">
       </div>
       <table class="sim-results">
