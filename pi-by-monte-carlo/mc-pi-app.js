@@ -26,6 +26,10 @@ angular.module("mcPiApp", [])
 
 		isHit: function() {
 		  return (Math.pow(x,2) + Math.pow(y,2) <= Math.pow(this.radius,2));
+		},
+
+		getRadius: function() {
+		  return this.radius;
 		}
 
 	  } //model		
@@ -59,5 +63,34 @@ angular.module("mcPiApp", [])
 
 	  
 
-	}); //controller
+	}) //controller
+
+    .directive("simCanvas", function() {
+	  var canvasH,
+	      ctx;
+
+	  function link(scope, element, attrs) {
+
+		element.append(angular.element("<canvas width='300' height='300' id='mcpi-canvas'>"));
+
+		canvasH = element.find("canvas");
+		ctx = canvasH[0].getContext("2d");
+
+		if (ctx) {
+		  ctx.beginPath();
+		  ctx.arc(0, 0, scope.mcPi.getRadius(), 0, (3/2)*Math.PI);
+		  ctx.strokeStyle = "tomato";
+		  ctx.stroke();
+        }
+
+      }//link
+
+      return {
+        link: link
+      };
+
+    }); //directive
+
+
+
 		

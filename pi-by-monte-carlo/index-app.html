@@ -14,10 +14,15 @@
     </header>
 
     <section class="sim-holder">
-      <div class="sim-canvas">
+
+<!--      <div class="sim-canvas">
         <canvas id="mcpi-canvas" width="300" height="300">
           canvas space
         </canvas>
+      </div>
+
+-->
+      <sim-canvas class="sim-canvas"> </sim-canvas>
 
       <div class="sim-controls">
         <input class="btn-style" type="button" id="startStopBtn" value="{{simRunning ? 'Stop' : 'Start'}}" ng-click="startStopSim()">
