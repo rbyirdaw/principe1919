@@ -8,6 +8,7 @@ angular.module("mcPiApp", [])
 		radius: 300,
 		hits: 0,
 		totalPoints: 0,
+		piByMC: 0,
 
 		getRandomCoord: function() {
 		  return Math.floor(1 + Math.random()*(this.radius-1));
@@ -22,6 +23,8 @@ angular.module("mcPiApp", [])
 		  if (this.isHit()) {
 			this.hits++;
 		  }
+		  
+		  this.piByMC = 4*(this.hits/this.totalPoints);
 		},
 
 		isHit: function() {
@@ -32,8 +35,12 @@ angular.module("mcPiApp", [])
 		  return this.radius;
 		},
 
-		getTotalPoints: function() {
-		  return this.totalPoints;
+		clearValues: function() {
+	      this.x = undefined;
+	      this.y = undefined;		  
+		  this.hits = 0;
+		  this.totalPoints = 0;
+		  this.piByMC = 0;
 		}
 
 	  } //model		
@@ -56,13 +63,20 @@ angular.module("mcPiApp", [])
 		  intervalId = $interval(function() {
 			$scope.mcPi.generatePoint();
 
-		  }, 50);
+		  }, 5);
 		}
 		$scope.dOut = "startStopSim";
-	  }
+	  };
 
 	  $scope.clearSim = function() {
-		alert("stopSim");
+		$scope.mcPi.clearValues();
+
+		if ($scope.simRunning) {
+		  $scope.simRunning = false;
+		  $interval.cancel(intervalId);
+		  intervalId = undefined;
+
+		}
 	  }
 
 
@@ -74,6 +88,17 @@ angular.module("mcPiApp", [])
 		  x,
 		  y,
 		  pointColor;
+
+	  function initCanvas(radius) {
+		ctx.clearRect(0, 0, canvasH[0].width, canvasH[0].height);
+
+		if (ctx) {
+		  ctx.beginPath();
+		  ctx.arc(0, 0, radius, 0, (3/2)*Math.PI);
+		  ctx.strokeStyle = "tomato";
+		  ctx.stroke();
+        }
+	  }
 	  
 	  function updateCanvas() {
 
@@ -84,34 +109,34 @@ angular.module("mcPiApp", [])
 		ctx.lineTo(x+1, y+1);
 		ctx.stroke();
 		
-		console.log("x "+x+", y "+y);
+//		console.log("x "+x+", y "+y);
 	  }
 	  		
 	  function link(scope, element, attrs) {
 
 		element.append(angular.element("<canvas width='300' height='300' id='mcpi-canvas'>"));
-
 		canvasH = element.find("canvas");
 		ctx = canvasH[0].getContext("2d");
-
-		if (ctx) {
-		  ctx.beginPath();
-		  ctx.arc(0, 0, scope.mcPi.getRadius(), 0, (3/2)*Math.PI);
-		  ctx.strokeStyle = "tomato";
-		  ctx.stroke();
-        }
+		initCanvas(scope.mcPi.getRadius());
 		
 		var watcherFunc = function() {
 		  return scope.mcPi.totalPoints;
 		}
 
 		scope.$watch(watcherFunc, function(newValue, oldValue) {
-	  	  scope.mcPi.isHit() ? pointColor = "#77c1c7" : pointColor = "#ff9900";
-		  x = scope.mcPi.x;
-		  y = scope.mcPi.y;
 
-		  updateCanvas();
+		  if ( (newValue === 0) && (oldValue > 0)) {
+			initCanvas(scope.mcPi.getRadius());
+		  } else if (newValue > oldValue) {
+	  	    scope.mcPi.isHit() ? pointColor = "#77c1c7" : pointColor = "#ff9900";
+		    x = scope.mcPi.x;
+		    y = scope.mcPi.y;
+
+		    updateCanvas();
+		  }
 		});
+
+
 
       }//link
 
