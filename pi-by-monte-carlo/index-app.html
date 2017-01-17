@@ -10,7 +10,7 @@
 
   <body ng-controller="MCPiCtrl">
     <header>
-      <h2>Pi by Monte Carlo APP</h2>
+      <h2 style="text-align: center;">Pi by Monte Carlo</h2>
     </header>
 
     <section class="sim-holder">
@@ -39,7 +39,7 @@
 	</tr>
 	<tr>
 	  <th>PI by Monte Carlo</th>
-	  <td>{{dOut}}</td>
+	  <td>{{mcPi.piByMC.toFixed(7)}}</td>
 	</tr>
 	<tr>
 	  <th>PI</th>
