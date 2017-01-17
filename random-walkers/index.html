@@ -1,0 +1,65 @@
+<!doctype HTML>
+<html>
+  <head>
+    <title>Random Walkers</title>
+    <link rel="stylesheet" href="../stylesheets/sim.css">
+    <script src="2D-rw.js"></script>
+
+  </head>
+
+  <body onload="init()">
+    <header>
+      <h2>Random Walkers</h2>
+    </header>
+
+<section class="sim-holder">	
+					
+<div class="sim-canvas">
+<canvas id="rw-canvas" width="500px" height="300px">
+	canvas space
+</canvas>						
+</div>
+<div class="sim-controls">
+<input class="btn-style" type="button" id="startStopBtn" value="Start" onClick="toggleAnim()">
+<input class="btn-style clearBtn" type="button" id="clearBtn" value="Clear" onClick="clearAnim()">
+</div>
+<table class="sim-results">
+<tr>
+<th></th>
+<th class="th-row">x</th>
+<th class="th-row">y</th>
+<th class="th-row">r</th>
+</tr>
+<tr>
+<th>Mean displacement</th>
+<td><input type="number" id="x-mean" value="0" readonly></td>
+<td><input type="number" id="y-mean" value="0" readonly></td>
+<td><input type="number" id="r-mean" value="0" readonly></td>
+</tr>
+<tr>
+<th>Mean square distance</th>
+<td><input type="number" id="x-mean-square-distance" value="0" readonly></td>
+<td><input type="number" id="y-mean-square-distance" value="0" readonly></td>
+<td><input type="number" id="r-mean-square-distance" value="0" readonly></td>
+</tr>
+<tr>
+<th>Root mean square distance</th>
+<td><input type="number" id="x-root-mean-square-distance" value="0" readonly></td>
+<td><input type="number" id="y-root-mean-square-distance" value="0" readonly></td>
+<td><input type="number" id="r-root-mean-square-distance" value="0" readonly></td>
+</tr>
+<tr><td class="table-break" colspan="4"></td></tr>
+<tr>
+<th>Total steps</th>
+<td><input type="number" id="steps-disp" value="0" readonly readonly></td>
+</tr>
+<tr>
+<th>Steps*step size</th>
+<td><input type="number" id="steps-stepSize" value="0" readonly readonly></td>
+</tr>						
+</table>	
+</section>
+  </body>
+
+</html>
+
