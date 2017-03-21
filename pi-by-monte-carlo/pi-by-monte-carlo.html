@@ -1,0 +1,153 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<!--The following line is from Bootstrap's basic template.-->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- The above 3 meta tags *must* come first in the head; 
+		any other head content must come *after* these tags (from Bootstrap's basic template) -->		
+		
+		<title>Pi by Monte Carlo</title>
+	
+		<!--The following lines are all from Bootstrap's basic template/Bootstrap.-->
+		<!-- Bootstrap -->
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+		
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->	
+
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Oleo+Script' rel='stylesheet' type='text/css'>		
+		<link rel="stylesheet" href="sub.css">
+		<link rel="stylesheet" href="sim.css">		
+		<script src="pi-by-monte-carlo/mc-pi.js"></script>
+	</head>
+	
+	<body onload="init()">
+		<aside class="container sub-nav-main">
+			<header class="nav-header">
+				<a href="index.html">
+					<div class="brand-style">Principe1919</div>
+				</a>
+			</header>
+			<nav>
+				<ul class="sub-nav">
+					<li><a href="the-monte-carlo-method.html">01. The Monte Carlo Method</a></li>
+					<li class="active">02. Pi by Monte Carlo</li>
+					<li><a href="random-walkers.html">03. Random Walkers</a></li>
+				</ul>
+			</nav>
+			
+			<footer class="sub-footer">
+				<div class="sub-footer-cr">(C) 2015 Principe1919</div>
+				<nav class="footer-nav">
+					<a href="index.html"><i class="material-icons md-18">home</i></a>
+					<a href="contact.php"><i class="material-icons md-18">email</i></a>
+				</nav>
+			</footer>
+		
+		</aside>
+		
+		<section class="container content-holder">
+			<header class="content-header">
+				Pi by Monte Carlo
+			</header>
+			<section class="content-sim">
+				<div class="sim-header">
+					The following simulation uses the Monte Carlo method to
+					determine the value of pi. The basis of the simulation is
+					placing random points inside the square, some of which will
+					land within the quarter circle.  Click start to begin the 
+					simulation and  notice how the calculated value of pi compares
+					to the true value. Continue reading to see why and how this works.
+				</div>
+				<section class="sim-holder">	
+					
+					<div class="sim-canvas">
+						<canvas id="mcpi-canvas" width="300" height="300">
+							canvas space
+						</canvas>	
+					</div>
+					<div class="sim-controls">
+						<input class="btn-style" type="button" id="startStopBtn" value="Start" onClick="toggleAnim()">
+						<input class="btn-style clearBtn" type="button" id="clearBtn" value="Clear" onClick="clearAnim()">
+					</div>
+
+					<table class="sim-results">
+						<tr>
+							<th>Points inside quarter circle</th>
+							<td><input type="number" id="hits" value="0" readonly></td>
+						</tr>
+						<tr>
+							<th>Total number of points</th>
+							<td><input type="number" id="total-points" value="0" readonly></td>
+						</tr>
+						<tr>
+							<th>PI by Monte Carlo</th>
+							<td><input type="number" id="mc-pi" value="0" readonly></td>
+						</tr>
+						<tr>
+							<th>PI</th>
+							<td>3.1415927</td>
+						</tr>
+					</table>			
+				</section>			
+			</section>
+			
+			<section class="content-text">
+				<p>
+					The Monte Carlo method is a computational method that uses random numbers to simulate a given type of event.  Since its development in the 1940s, the Monte Carlo method has advanced tremendously and is now an integral and indispensable tool in scientific research.  Fields that employ this approach range from astrophysics to biophysics to meteorology, a testament to the versatility of the method.  One attractive feature of using this tool to perform computational experiments is that all that is required is a computer – no need to invest lots of money on expensive laboratory equipment, although a fancy computer is a plus.
+				</p>
+				<p>
+					A simple demonstration of the Monte Carlo method that is commonly given is the calculation of the value of pi.  First, we draw a quarter circle and then inscribe it inside a square.  The demonstration can be done with a semi or full circle but the quarter circle is simpler.  Inscribing the quarter circle in the square means that the square and quarter circle have sides of the same length.  More importantly, the original, full, circle has radius equal to the side of the square.
+				</p>
+				<p>
+					The next step is to use the Monte Carlo method to place points randomly inside the square.  Remember that in a Monte Carlo method, random numbers are used to simulate some kind of a process.  In this case, it is the random placement of points inside the square.  So, all we really have to do is to generate two random numbers, for the x and y coordinates.  However, since random number generators give numbers in the range of 0 to 1, we will define our square to have a side of size 1.  Then, generating two random numbers will place a point inside the square.  We repeat this many times to fill the square with as many points as desired.
+				</p>
+				<p>
+					Now comes the key part, the part that makes this whole experiment work.  As we place points inside the square, we count the total number of points placed as well as the total number of points placed inside the quarter circle. So then, if we take the ratio of the number of points inside the quarter circle to the total points placed inside the square, it will give us an approximation for the area of the quarter circle.  
+				</p>
+				<p>
+					The beauty here is in the design of the experiment - that the ratio of the number of points is the same as the ratio of the area of the quarter circle to the area of the square. Clearly, the more points we place inside the square the better the approximation will be.  Thus, our Monte Carlo based experiment allows us to calculate the area of the quarter circle.  It is clear here to see that we can replicate this approach to find areas of any shapes and sizes, as long as we devise the experiment properly.  
+				</p>
+				<p>
+					Now, back to pi.  We have illustrated how the Monte Carlo method is used to approximate the area of the quarter circle.  Given that pi is such an iconic number and also to easily illustrate the power of the Monte Carlo method, the experiment described above is commonly shown as an approximation of the value of pi.  This is done by using the relationship between the area of a circle and its radius, through pi, namely A = 4 pi r^2.  Since we set our square to have a side of 1, then pi becomes A / 4.  It is much easier to now see how the experiment works by comparing the approximate value of pi it gives us to the known value of pi, which is 3.14159 to 5 decimal places.
+				</p>
+			</section>
+			<aside class="aside-content">
+				<header class="aside-header">
+					Related content
+				</header>
+				<ul>
+					<li><a href="http://mathworld.wolfram.com/MonteCarloMethod.html">Monte Carlo Method (MathWorld)</a></li>
+					<li><a href="https://en.wikipedia.org/wiki/Monte_Carlo_method">Monte Carlo method (Wiki)</a></li>
+					<li><a href="http://www.mathworks.com/discovery/monte-carlo-simulation.html">Monte Carlo simulation (MathWorld)</a></li>
+				</ul>
+			</aside>
+			
+
+		</section>
+	
+	
+	
+	<!-- Bootstrap core JavaScript ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>		
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	<!-- Need to get the file if want to use this line. Is there direct line?
+		<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script -->
+	
+	</body>
+
+</html>
