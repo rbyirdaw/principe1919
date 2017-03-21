@@ -1,0 +1,56 @@
+<!doctype HTML>
+<html ng-app="mcPiApp">
+  <head>
+    <title>Pi by Monte Carlo</title>
+    <link rel="stylesheet" href="../stylesheets/sim.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="mc-pi-app.js"></script>
+
+  </head>
+
+  <body ng-controller="MCPiCtrl">
+    <header>
+      <h2 style="text-align: center;">Pi by Monte Carlo</h2>
+    </header>
+
+    <section class="sim-holder">
+
+<!--      <div class="sim-canvas">
+        <canvas id="mcpi-canvas" width="300" height="300">
+          canvas space
+        </canvas>
+      </div>
+
+-->
+      <sim-canvas class="sim-canvas"> </sim-canvas>
+
+      <div class="sim-controls">
+        <input class="btn-style" type="button" id="startStopBtn" value="{{simRunning ? 'Stop' : 'Start'}}" ng-click="startStopSim()">
+	<input class="btn-style clearBtn" type="button" id="clearBtn" value="Clear" ng-click="clearSim()">
+      </div>
+      <table class="sim-results">
+        <tr>
+	  <th>Points inside quarter circle</th>
+	  <td>{{mcPi.hits}}</td>
+	</tr>
+	<tr>
+	  <th>Total number of points</th>
+	  <td>{{mcPi.totalPoints}}</td>
+	</tr>
+	<tr>
+	  <th>PI by Monte Carlo</th>
+	  <td>{{mcPi.piByMC.toFixed(7)}}</td>
+	</tr>
+	<tr>
+	  <th>PI</th>
+	  <td>3.1415927</td>
+	</tr>
+      </table>
+
+      
+    </section>
+
+  </body>
+
+</html>
+
