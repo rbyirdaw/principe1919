@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<!--The following line is from Bootstrap's basic template.-->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- The above 3 meta tags *must* come first in the head; 
+		any other head content must come *after* these tags (from Bootstrap's basic template) -->		
+		
+		<title>The Monte Carlo Method</title>
+	
+		<!--The following lines are all from Bootstrap's basic template/Bootstrap.-->
+		<!-- Bootstrap -->
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+		
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->	
+
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Oleo+Script' rel='stylesheet'>		
+		<link rel="stylesheet" href="sub.css">
+		<link rel="stylesheet" href="sim.css">		
+		<script src="the-monte-carlo-method/table-anim.js"></script>
+		<script src="the-monte-carlo-method/mc-dice.js"></script>		
+
+	</head>
+	
+	<body onload="init()">	
+		<aside class="container sub-nav-main">
+			<header class="nav-header">
+				<a href="index.html">
+					<div class="brand-style">Principe1919</div>
+				</a>
+			</header>
+			<nav>
+				<ul class="sub-nav">
+					<li class="active">01. The Monte Carlo Method</li>
+					<li><a href="pi-by-monte-carlo.html">02. Pi by Monte Carlo</a></li>
+					<li><a href="random-walkers.html">03. Random Walkers</a></li>
+				</ul>
+			</nav>
+			
+			<footer class="sub-footer">
+				<div class="sub-footer-cr">(C) 2015 Principe1919</div>
+				<nav class="footer-nav">
+					<a href="index.html"><i class="material-icons md-18">home</i></a>
+					<a href="contact.php"><i class="material-icons md-18">email</i></a>
+				</nav>
+			</footer>
+		
+		</aside>	
+	
+	
+		<section class="container content-holder">
+			<header class="content-header">
+				The Monte Carlo Method
+			</header>
+			<section class="content-sim">
+				<div class="sim-header">
+					<p>
+						On a throw of a single die, what is the probability of 
+						getting a 3? How about with 5 dice? What would be the 
+						probability of getting a sum of 5 when the dice are thrown? 
+					</p>
+					<p>
+						We can use the rules of probability to calculate all of the
+						above outcomes. Another way is to use the Monte Carlo
+						method. The simulation below will use this method to 
+						calculate the probabilities of getting a sum of 5, 12, 18,
+						23 and 30. Click start to begin and notice how the 
+						calculated probabilities stabilize with increasing 
+						number of throws. Also notice how the chance of getting
+						a sum of 5 or 30 is very low - it will take quite a few
+						throws to see these outcomes. The outcome with the 
+						largest probability is a sum of 18. Read on to see how 
+						this all works.
+					</p>
+				</div>
+				<section class="sim-holder">						
+					<div class="sim-canvas">
+						<canvas id="mc-dice-canvas" width="500px" height="350px">
+							canvas space
+						</canvas>						
+					</div>
+					<div class="sim-controls">
+						<input class="btn-style" type="button" id="startStopBtn" value="Start" onClick="toggleAnim()">
+						<input class="btn-style clearBtn" type="button" id="clearBtn" value="Clear" onClick="clearAnim()">
+					</div>
+
+					<table class="sim-results">			
+						<tr>
+							<th class="th-row">Total throws</th>						
+							<th class="th-row">Sum</th>
+						</tr>
+						<tr>
+							<td id="totalThrows">0</td>
+							<td id="sum">0</td>
+						</tr>				
+					</table>
+					
+					<table class="sim-results">
+						<tr>
+							<th class="th-row">Sum</th>
+							<th class="th-row">Number of outcomes</th>
+							<th class="th-row">Probability</th>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td id="sum5"></td>
+							<td id="prob5"></td>
+						</tr>
+						<tr>
+							<td>12</td>
+							<td id="sum12"></td>
+							<td id="prob12"></td>
+						</tr>	
+						<tr>
+							<td>18</td>
+							<td id="sum18"></td>
+							<td id="prob18"></td>
+						</tr>
+						<tr>
+							<td>23</td>
+							<td id="sum23"></td>
+							<td id="prob23"></td>
+						</tr>
+						<tr>
+							<td>30</td>
+							<td id="sum30"></td>
+							<td id="prob30"></td>
+						</tr>	
+					</table>
+				</section>			
+			
+			</section>
+			<section class="content-text">		
+				<span class="content-text-header">Dice & Probabilities</span>
+				<p>
+					For a fair six-sided die, like the ones used in the above demonstration, the probability of getting any one of the six faces is the same, 1/6.  In other words, on every throw of the dice, there is a 1 in 6 chance of getting any of the numbers 1 to 6.  This type of outcome is the simplest outcome we can have for a single die throw.					
+				</p>
+				<p>
+					There are a multitude of more complex outcomes we can consider for a single die.  For instance, we can consider outcomes with only even numbers, outcomes of numbers less than a given number, or outcomes with specific sequences of numbers such as a 2 on the first throw and a 5 on the second throw, and so on. One can use the rules of probability to calculate the odds of these types of outcomes, all based on the simplest outcome, namely that each face of a die has an equal probability of 1/6.  So, for instance, the probability of getting an even number on a throw is simply the product of the probabilities of getting a 2, 4 or 6, which gives us 1/2.
+				</p>
+					If we now go from a single die to two or more dice, the various outcomes we can consider are much greater and can be more complex.  As an example, with just two dice, we can now ask what the probability of getting an odd number on one die and an even number on the other would be, or say a number less than 5 on one and a 6 on the second, and so on.  Yet another type of outcome we can look at would be something like what is given in the demo above, where we look for the probability of getting a specific sum value, the sum of the values of each die.
+				<p>
+					The probability of this type of outcome can still be calculated manually, especially for a small number of dice.  In order to do so, we first have to know the total number of outcomes possible for the given number of dice.  For instance, for two dice, the total number of outcomes is 36 – there are 6 possibilities for each die and the combined total outcome would be the product of each.  In general, for x number of dice, there are 6<sup>x</sup> total outcomes possible.  So now we can get the probability of a specific sum, say a 3, by counting the number of ways to get a 3 when the two dice are thrown and dividing this by the total outcomes possible, 36.  We can get a sum of 3 if the first die is a 1 and the second die is a 2 or the first one is a 2 and the second is a 1.  These are the only two ways that the sums would equal to 3.  Thus, the probability of getting a sum of 3 becomes 2 out of 36 or 1/18.
+				</p>
+				<p>
+					If we now increase the number of dice, manually calculating the probability of getting a specific sum when the dice are thrown will become tedious and impractical.  For the five dice given above, calculating the probabilities of the different sums shown will definitely require a good amount of time.  This is where the Monte Carlo method comes in.
+				</p>
+				<span class="content-text-header">The Monte Carlo Method</span>
+				<p>
+					The history of the Monte Carlo method goes back to the 1940s.  During the Second World War, a special project to develop the first nuclear weapon was initiated in the U.S.  The Manhattan Project, as it is now referred to, had a research and development group in Los Alamos, New Mexico.  A great number of renowned scientists, many of them physicists from the U.S. and Europe, had joined the R&#38;D group in Los Alamos.  
+				</p>
+				<p>				
+					One of these scientists who came from Europe was a Polish mathematician by the name of Stanis&#322;aw Ulam.  In 1946, Ulam, while recovering from an illness, conceived of the basic idea for the Monte Carlo method.  As the story goes, Ulam was playing solitaire and wanted to know what the chances are 
+					<q>
+						that a Canfield solitaire, laid out with 52 cards, will come out successfully?
+					</q>
+					<sup>1</sup>.
+					After trying to manually calculate the solution and realizing the complexity of the problem, it occurred to him that there may be a simpler way.  Instead of trying to do calculations by hand, why not just play a bunch of solitaire games, count the number of winning hands and get the probability from there?  
+				</p>
+				<p>
+					The potential of such an approach and its applicability to many scientific problems was clear to Ulam.  After sharing his idea with a colleague from the Manhattan Project, Jon Von Neumann, the very first Monte Carlo method was implemented in 1947 on the ENIAC.  What was also important here was the fortuitous development of computers and the general advances that were being made in “electronic computing” at the same time that the Monte Carlo method was being developed.  In the very first paper published in 1949 describing the method, the authors Ulam and Nicholas Metropolis, yet another physicist and colleague of Ulam and von Neumann at Los Alamos, write 
+					<q>
+					    We want now to point out that modern computing machines are extremely well suited to perform the procedures described.
+					</q>
+					<sup>2</sup>.
+					The name Monte Carlo was coined by Metropolis.  Apparently, Ulam had an uncle who frequented the casinos in Monte Carlo, Monaco, and so naming this new method Monte Carlo appears to be a reference to its statistical nature1.  
+				</p>
+				<p>
+					The essence of the Monte Carlo method is to generate many states of a given system and take measurements from each state.  These measurements can then be aggregated to determine some characteristics of the system.  For example, in Ulam’s card game, the system being investigated is the game of solitaire.  His plan to play many games was essentially a plan to generate many states of a solitaire hand.  For our demonstration with the five dice, a single state is the outcome of the five dice after each is thrown.  The more states we can generate the more accurate our calculations will be.
+				</p>
+				<p>
+					An important aspect of the Monte Carlo method is therefore how we go about generating states.  Ulam’s approach was a manual one which is really not practical nor feasible for other types of problems.  A much easier and quicker approach is to generate states computationally through simulations.  We can simulate a hand of solitaire by randomly picking cards.  We can also simulate the outcome of five dice by randomly picking a face for each die.  We do this by generating a random number in our simulation and using this number to pick a card or a face of a die.  Thus, random numbers are at the heart of the Monte Carlo method.  
+				</p>
+				<p>				
+					Today, the Monte Carlo method is an invaluable tool in many scientific disciplines.  Scientific research can loosely be grouped into two categories, experimental or theoretical.  The power of the Monte Carlo method is that it lies between these two paradigms.  In one sense it is a theoretical and computational endeavor where one never actually directly interacts with the subject matter being investigated.  On the other hand, it can be considered experimental since one usually makes use of experimentally measured quantities in implementing and utilizing the Monte Carlo method.  More importantly, the repeated recreation of the system being investigated, as in the throw of five dice or games of solitaire, is in and of itself really experimentation.  As computational methods go, the Monte Carlo method is truly one of a kind.  The section titled 
+					<strong>
+						<a href="pi-by-monte-carlo.html">
+							“Pi by Monte Carlo” 
+						</a>
+					</strong>
+					gives yet another demonstration of the Monte Carlo method.
+
+				</p>
+			</section>
+			<aside class="aside-content">
+				<header class="aside-header">
+					Related content
+				</header>
+				<ul>
+					<li><a href="http://mathworld.wolfram.com/MonteCarloMethod.html">Monte Carlo Method (MathWorld)</a></li>
+					<li><a href="https://en.wikipedia.org/wiki/Monte_Carlo_method">Monte Carlo method (Wiki)</a></li>
+					<li><a href="http://www.mathworks.com/discovery/monte-carlo-simulation.html">Monte Carlo simulation (MathWorld)</a></li>
+					<li><a href="https://en.wikipedia.org/wiki/Manhattan_Project">The Manhattan Project</a></li>
+					<li><a href="https://en.wikipedia.org/wiki/ENIAC">The ENIAC</a></li>	
+				</ul>
+			</aside>
+			
+
+			<aside class="refs">
+				<ol>
+					<li>
+					    Eckhart, R. (1987).
+						<q>
+						    Stan Ulam, John von Neumann, and the Monte Carlo method.
+						</q>
+						<em>
+						   Los Alamos Science, Special Issue
+					    </em>
+					    (15): 131 - 137.
+					</li>
+					<li>
+					    Metropolis, N, Ulam, S. (1949).
+						<q>
+						    The Monte Carlo method.
+						</q>
+						<em>
+						   Journal of the American Statistical Association
+					    </em>
+					    <strong>44</strong>
+					    (247): 335 - 341.
+					</li>					
+				</ol>
+			</aside>
+		</section>
+	
+
+	
+		<!-- Bootstrap core JavaScript ================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>		
+		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+		<!-- Need to get the file if want to use this line. Is there direct line?
+			<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script -->
+	
+	</body>
+
+</html>
