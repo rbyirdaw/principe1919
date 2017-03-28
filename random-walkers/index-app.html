@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html ng-app="randomWalkersApp">
+  <head>
+    <title>Random Walkers</title>
+    <link rel="stylesheet" href="../stylesheets/sim.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script> 
+  </head>
+
+  <body ng-controller="RandomWalkersCtrl">
+    <header>
+      <h2 style="text-align: center;">Random Walkers</h2>
+    </header>
+
+    <section class="sim-holder">
+
+      <sim-canvas class="sim-canvas"></sim-canvas>
+
+      <div class="sim-controls">
+        <input type="button" class="btn-style" value="StrStp">
+        <input type="button" class="btn-style" value="Clear">
+      </div>
+
+      <table class="sim-results">
+        <tr>
+          <th></th>
+          <th class="th-row">x</th>
+          <th class="th-row">y</th>
+          <th class="th-row">r</th>
+        </tr>
+        <tr>
+          <th>Mean Displacement</th>
+          <td>mean x</td>
+          <td>mean y</td>
+          <td>mean r</td>
+        </tr>
+        <tr>
+          <th>Mean Square Distance</th>
+          <td>mean xx</td>
+          <td>mean yy</td>
+          <td>mean rr</td>
+        </tr>
+        <tr>
+          <th>Root Mean Square Distance</th>
+          <td>r mean xx</td>
+          <td>r mean yy</td>
+          <td>r mean rr</td>
+        </tr>
+
+        <tr><td class="table-break" colspan="4"></td></tr>
+        <tr>
+          <th>Total Steps</th>
+          <td>total steps</td>
+        </tr>
+        <tr>
+          <th>Steps * Step Size</th>
+          <td>steps*stepSize</td>
+        </tr>
+      </table>
+
+
+    </section>
+
+  </body>
+
+</html>
+
+
