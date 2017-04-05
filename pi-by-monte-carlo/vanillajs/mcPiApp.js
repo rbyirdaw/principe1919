@@ -3,8 +3,10 @@
 
   var mcPiModel,
       mcPiView,
-      mcPiController;
+      mcPiController,
+      radius = 300;
 
+  mcPiModel = new mcPiApp.Model(radius);
   mcPiView = new mcPiApp.View();
   mcPiController = new mcPiApp.Controller(mcPiModel, mcPiView);  
 
