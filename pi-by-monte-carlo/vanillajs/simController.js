@@ -12,6 +12,8 @@
 
   }
 
+//=============================================================================
+
   SimController.prototype.stepSim = function() {
     
     this.simModel.stepSim();
@@ -20,6 +22,7 @@
   };
 
 //=============================================================================
+
   SimController.prototype.startSim = function() {
 
     if (!this.simRunning) {
@@ -34,12 +37,13 @@
   };
 
 //=============================================================================
+
   SimController.prototype.startSim = function() {
 
     if (this.simRunning) {
 
       clearInterval(this.intervalId);
-      this.simRunning = fals;
+      this.simRunning = false;
 
     } else {
       //sim is not running
@@ -54,3 +58,4 @@
   window.mcPiApp.Controller = SimController;  
 
 })(window);
+
