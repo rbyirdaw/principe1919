@@ -61,6 +61,7 @@
         x: _x,
         y: _y,
         hits: _hits,
+        isHit: _isHit,
         totalPoints: _totalPoints,
         piByMc: _piByMC
       }
@@ -69,7 +70,7 @@
 
 //=============================================================================
 
-    this.simStep = function() {
+    this.stepSim = function() {
 
       this.generatePoints();
       _totalPoints++;
