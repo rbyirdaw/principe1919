@@ -48,6 +48,14 @@
 
 //=============================================================================
 
+    this.getRadius = function() {
+
+      return  _radius;
+
+    };
+
+//=============================================================================
+
     this.getParameters = function() {
 
       return {radius: _radius};
@@ -63,7 +71,7 @@
         hits: _hits,
         isHit: _isHit,
         totalPoints: _totalPoints,
-        piByMc: _piByMC
+        piByMC: _piByMC.toFixed(7)
       }
 
     };
@@ -78,6 +86,8 @@
       if (this.isHit()) {
        _isHit = true;
        _hits++;
+      } else {
+        _isHit = false;
       }
 
       _piByMC = 4*(_hits/_totalPoints);
