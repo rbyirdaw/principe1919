@@ -3,12 +3,11 @@
 
   function SimController(simModel, simView) {
     
-    var self = this;
+    var self = this,
+        arcParam;
     
     this.simModel = simModel;
     this.simView = simView;
-
-    this.simModel.init();
 
     this.simRunning = false;
     this.intervalId = undefined;
@@ -21,20 +20,27 @@
       }
     });
 
+    this.simView.setListener('clear', function() {
+      self.initSim();
+    });
+
   }
 
 //=============================================================================
 
-  SimController.prototype.stepSim = function() {
-    
+  SimController.prototype.stepSim = function(self) {
+
     var obs,
         pointColor;
 
-    this.simModel.stepSim();
+    self.simModel.stepSim();
 
-    obs = this.simModel.getObservables();
-    obs.hit === true ? pointColor = "#77c1c7" : pointColor = "#ff9900";
-    this.simView.updateCanvas([{x: obs.x, y:obs.y, pointColor: pointColor}]);
+    obs = self.simModel.getObservables();
+    obs.isHit === true ? pointColor = "#77c1c7" : pointColor = "#ff9900";
+
+    self.simView.updateCanvas([{x: obs.x, y:obs.y, pointColor: pointColor}]);
+
+    self.simView.updateObservables(obs);
 
   };
 
@@ -47,7 +53,7 @@
     if (!this.simRunning) {
 
       this.simRunning = true;
-      this.intervalId = setInterval(self.stepSim, 5);
+      this.intervalId = setInterval(self.stepSim, 5, self);
 
     } else {
       //sim is already running
@@ -70,6 +76,24 @@
 
   };
 
+//=============================================================================
+
+  SimController.prototype.initSim = function() {
+    
+    var arcParam = {
+      x: 0,
+      y: 0, 
+      arcRadius: this.simModel.getRadius(),
+      startAng: 0,
+      endAng: (3/2)*Math.PI,
+      strokeColor: "tomato"
+    };
+
+    this.simModel.init();
+    this.simView.init(arcParam);
+    this.simView.updateObservables(this.simModel.getObservables());
+
+  };
 
 //=============================================================================
 
