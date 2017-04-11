@@ -12,18 +12,20 @@
         _piByMC;
 
 //=============================================================================
+    /*
+     * Returns a random number between lowerBound and upperBound, inclusive.
+     */
+    this.getRandomCoord = function(lowerBound, upperBound) {
 
-    this.getRandomCoord = function() {
-
-      return Math.floor(1 + Math.random()*(_radius-1));
+      return Math.floor(lowerBound + Math.random()*(upperBound + 1));
   
     };
 
 //=============================================================================
 
     this.generatePoints = function() {
-      _x = this.getRandomCoord();
-      _y = this.getRandomCoord();
+      _x = this.getRandomCoord(0, (_radius - 1));
+      _y = this.getRandomCoord(0, (_radius - 1));
 
     };
 
