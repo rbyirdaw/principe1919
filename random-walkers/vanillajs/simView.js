@@ -11,7 +11,13 @@
     this.obsTable = {
       xMean: document.querySelector("[title='xMean']"),
       yMean: document.querySelector("[title='yMean']"),
-      rMean: document.querySelector("[title='rMean']")
+      rMean: document.querySelector("[title='rMean']"),
+      xMSD: document.querySelector("[title='xMSD']"),
+      yMSD: document.querySelector("[title='yMSD']"),
+      rMSD: document.querySelector("[title='rMSD']"),
+      xRMSD: document.querySelector("[title='xRMSD']"),
+      yRMSD: document.querySelector("[title='yRMSD']"),
+      rRMSD: document.querySelector("[title='rRMSD']")
     }
   }
 
