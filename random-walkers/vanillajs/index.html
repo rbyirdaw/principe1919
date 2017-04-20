@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Random Walkers</title>
-    <link rel="stylesheet" href="../stylesheets/sim.css">
+    <link rel="stylesheet" href="../../stylesheets/sim.css">
   </head>
 
   <body>
@@ -10,10 +10,11 @@
       <h2>Random Walkers</h2>
     </header>
 
-    <section class="sim-holder">	
-      <canvas title="simCanvas" id="rw-canvas" width="500px" height="300px">
-	canvas space
-      </canvas>						
+    <section class="sim-holder">
+      <canvas title="simCanvas" width="500px" height="300px">
+        canvas space
+      </canvas>
+    </section>
 
     <section class="sim-controls">
       <input type="button" class="btn-style" value="Start" title="startStop">
@@ -54,14 +55,15 @@
         <tr>
           <th>Steps*step size</th>
           <td title="stepsByStepSize"></td>
-        </tr>						
-      </table>	
+        </tr>
+      </table>
     </section>
 
+
     <script src="rwModel.js"></script>
-    
+    <script src="simView.js"></script>
+    <script src="simController.js"></script>
     <script src="rwApp.js"></script>
   </body>
 
 </html>
-
