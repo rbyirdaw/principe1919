@@ -28,25 +28,46 @@
   //============================================================================
 
   SimController.prototype.initSim = function() {
-
+    this.simModel.init();
+    this.simView.init();
+    this.simView.setStrokeColor("tomato");
   };
 
   //============================================================================
 
   SimController.prototype.startSim = function() {
+    var self = this;
 
+    if (!this.simRunning) {
+      this.simRunning = true;
+      this.intervalId = setInterval(self.stepSim, 25, self);
+    }
   };
 
   //============================================================================
 
   SimController.prototype.stepSim = function(self) {
+    var obs;
+
+    self.simModel.stepSim();
+    obs = self.simModel.getObservables();
+
+    self.simView.clearCanvas();
+    self.simView.updateCanvas(obs.pointSet);
+    self.simView.updateObservables(obs);
+
 
   };
 
   //============================================================================
 
   SimController.prototype.stopSim  = function() {
+    if (this.simRunning) {
 
+       clearInterval(this.intervalId);
+       this.simRunning = false;
+
+     }
   };
 
   //============================================================================
