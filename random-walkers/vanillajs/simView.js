@@ -17,7 +17,9 @@
       rMSD: document.querySelector("[title='rMSD']"),
       xRMSD: document.querySelector("[title='xRMSD']"),
       yRMSD: document.querySelector("[title='yRMSD']"),
-      rRMSD: document.querySelector("[title='rRMSD']")
+      rRMSD: document.querySelector("[title='rRMSD']"),
+      totalSteps: document.querySelector("[title='totalSteps']"),
+      stepsByStepSize: document.querySelector("[title='stepsByStepSize']")
     }
   }
 
@@ -58,24 +60,20 @@
   //===========================================================================
 
    SimView.prototype.updateCanvas = function(pointSet) {
-
-     if (pointSet[1].hasOwnProperty("pointColor")) {
-       for (i = 0; i < pointSet.length; i++) {
-         this.drawPoint(pointSet[i].x, pointSet[i].y, pointSet[i].pointColor);
-       }
-     } else {
-
-       for (i = 0; i < pointSet.length; i++) {
-         this.drawPoint(pointSet[i].x, pointSet[i].y, "#0000cc");
-       }
-
+     for (i = 0; i < pointSet.length; i++) {
+       this.drawPoint(pointSet[i].x, pointSet[i].y);
      }
-
    };
 
    //===========================================================================
 
-   SimView.prototype.drawPoint = function(x, y, pointColor) {
+   SimView.prototype.setStrokeColor = function(strokeColor) {
+     this.ctx.strokeStyle = strokeColor;
+   };
+
+   //===========================================================================
+
+   SimView.prototype.drawPoint = function(x, y) {
 
      if (x < 0) {
         x = this.canvas.width - 10;
@@ -88,14 +86,9 @@
        y = 10;
      }
 
-     if (pointColor === undefined) {
-       pointColor = "#0000cc";
-     }
-
      this.ctx.beginPath();
      this.ctx.moveTo(x, y);
      this.ctx.lineTo(x+1, y+1);
-     this.ctx.strokeStyle = pointColor;
      this.ctx.stroke();
    };
 

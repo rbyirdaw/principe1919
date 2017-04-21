@@ -5,15 +5,16 @@
   function Particle(x, y) {
     var _x = x,
         _y = y,
+        _xDist = 0,
+        _yDist = 0,
         _xSqDist = 0,
         _ySqDist = 0,
         _rSqDist = 0;
 
     this.move = function(delX, delY) {
-
+      //coordinates
       _x += delX;
       _y += delY;
-
     };
 
     this.getDisplacement = function() {
@@ -23,11 +24,24 @@
       };
     }
 
+    this.updateDist = function(delX, delY) {
+      //distance traveled along x & y
+      _xDist += delX;
+      _yDist += delY;
+    };
+
     this.updateSqDist = function() {
 
-      _xSqDist = Math.pow(_x, 2);
-      _ySqDist = Math.pow(_y, 2);
+      _xSqDist = Math.pow(_xDist, 2);
+      _ySqDist = Math.pow(_yDist, 2);
       _rSqDist = _xSqDist + _ySqDist;
+    };
+
+    this.getDist = function() {
+      return {
+        xDist: _xDist,
+        yDist: _yDist
+      }
     };
 
     this.getSqDist = function() {
@@ -39,7 +53,7 @@
     }
 
 
-  }
+  } //Particle
 
   //===========================================================================
 
@@ -49,6 +63,7 @@
         _xOrigin = xOrigin,
         _yOrigin = yOrigin,
         _particles = [],
+        _totalSteps,
         _obs = {};
 
     //=========================================================================
@@ -57,7 +72,7 @@
       for (i = 0; i < _numParticles; i++) {
         _particles[i] = new Particle(_xOrigin, _yOrigin);
       }
-
+      _totalSteps = 0;
     };
 
     //=========================================================================
@@ -105,11 +120,14 @@
 
       }
 
+      _totalSteps++;
+
       for (i = 0; i < _numParticles; i++) {
         Math.random() < 0.5 ? delX = -1 : delX = 1;
         Math.random() < 0.5 ? delY = -1 : delY = 1;
 
         _particles[i].move(delX, delY);
+        _particles[i].updateDist(delX, delY);
         _particles[i].updateSqDist();
 
         _obs.pointSet.push({
@@ -117,8 +135,8 @@
           y: _particles[i].getDisplacement().y
         });
 
-        sumX += _obs.pointSet[i].x;
-        sumY += _obs.pointSet[i].y;
+        sumX += _particles[i].getDist().xDist;
+        sumY += _particles[i].getDist().yDist;
 
         sumXSqDist += _particles[i].getSqDist().xSqDist;
         sumYSqDist += _particles[i].getSqDist().ySqDist;
@@ -137,10 +155,13 @@
       _obs.xRMSD = Math.sqrt(_obs.xMSD).toFixed(3);
       _obs.yRMSD = Math.sqrt(_obs.yMSD).toFixed(3);
       _obs.rRMSD = Math.sqrt(_obs.rMSD).toFixed(3);
+
+      _obs.totalSteps = _totalSteps;
+      _obs.stepsByStepSize = Math.sqrt(_totalSteps).toFixed(3);
     };
 
 
-  }
+  } //RandomWalkModel
 
   //===========================================================================
 

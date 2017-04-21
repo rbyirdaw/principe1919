@@ -30,6 +30,7 @@
   SimController.prototype.initSim = function() {
     this.simModel.init();
     this.simView.init();
+    this.simView.setStrokeColor("tomato");
   };
 
   //============================================================================
@@ -39,7 +40,7 @@
 
     if (!this.simRunning) {
       this.simRunning = true;
-      this.intervalId = setInterval(self.stepSim, 5, self);
+      this.intervalId = setInterval(self.stepSim, 25, self);
     }
   };
 
