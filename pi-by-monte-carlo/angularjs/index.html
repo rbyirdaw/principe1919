@@ -15,19 +15,12 @@
 
     <section class="sim-holder">
 
-<!--      <div class="sim-canvas">
-        <canvas id="mcpi-canvas" width="300" height="300">
-          canvas space
-        </canvas>
-      </div>
-
--->
       <sim-canvas class="sim-canvas"> </sim-canvas>
 
-      <div class="sim-controls">
+      <section class="sim-controls">
         <input class="btn-style" type="button" id="startStopBtn" value="{{simRunning ? 'Stop' : 'Start'}}" ng-click="startStopSim()">
-	<input class="btn-style clearBtn" type="button" id="clearBtn" value="Clear" ng-click="clearSim()">
-      </div>
+	      <input class="btn-style btn-right-align" type="button" id="clearBtn" value="Clear" ng-click="clearSim()">
+      </section>
       <table class="sim-results">
         <tr>
 	  <th>Points inside quarter circle</th>
@@ -47,10 +40,9 @@
 	</tr>
       </table>
 
-      
+
     </section>
 
   </body>
 
 </html>
-
