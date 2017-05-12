@@ -6,7 +6,7 @@ header h2 {
 
 /*sim canvas*/
 canvas{
-	border: solid 2px #a9a9a9;	
+	border: solid 2px #a9a9a9;
 	display: block;
 	margin: 0 auto;
 }
@@ -27,27 +27,28 @@ canvas{
 	display: inline-block;
 	border: 0px;
 	border-radius: 7px;
-	
+
 	margin: 0px;
 	padding: 10px 30px;
 
 	color: #888;
 	background: #444;
-	
+
 	cursor: pointer;
 	font-weight: 400;
 	font-family: consolas, arial;
 	letter-spacing: 1px;
 	text-transform: uppercase;
 	font-size: 18px;
-	
-}
-.btn-style:hover{
-	color: #000;
+
 }
 
-.clearBtn{
-	float: right;
+.btn-right-align {
+  float: right;
+}
+
+.btn-style:hover{
+	color: #000;
 }
 
 
@@ -71,7 +72,7 @@ td, th, .sim-results input{
 	font-family: Arial;
 	font-size: 18px;
 	font-weight: 200;
-	color: #333;	
+	color: #333;
 }
 th{
 	text-align: right;
@@ -83,7 +84,7 @@ th{
 }
 td{
 	height: 30px;
-	text-align: center;	
+	text-align: center;
 }
 th,td{
 	min-width: 100px;
@@ -109,9 +110,8 @@ input[type=number]{
 /*The following removes scroll arrows on chrome
  *which will take space on right even if readonly.
  */
-input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button{
 	-webkit-appearance: none;
 	margin: 0;
 }
-

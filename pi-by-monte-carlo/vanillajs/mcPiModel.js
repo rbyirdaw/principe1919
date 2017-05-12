@@ -18,7 +18,7 @@
     this.getRandomCoord = function(lowerBound, upperBound) {
 
       return Math.floor(lowerBound + Math.random()*(upperBound + 1));
-  
+
     };
 
 //=============================================================================
@@ -84,18 +84,16 @@
 
       this.generatePoints();
       _totalPoints++;
-      
+
       if (this.isHit()) {
-       _isHit = true;
-       _hits++;
+        _isHit = true;
+        _hits++;
+        _piByMC = 4*(_hits/_totalPoints);
       } else {
         _isHit = false;
       }
 
-      _piByMC = 4*(_hits/_totalPoints);
-
     };
-
 
   }//MCpiModel
 
@@ -105,6 +103,3 @@
   window.mcPiApp.Model = MCpiModel;
 
 })(window);
-
-    
-       
