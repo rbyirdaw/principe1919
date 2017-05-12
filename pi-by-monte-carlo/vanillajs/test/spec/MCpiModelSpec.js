@@ -10,8 +10,7 @@ describe("MCpiModel", function() {
   });
 
   it("should make available model observables", function() {
-    var obs = model.getObservables();
-    expect(obs).toBeTruthy();
+    expect(model.getObservables()).toBeTruthy();
   });
 
   it("should make available model parameters - radius", function() {
@@ -20,16 +19,29 @@ describe("MCpiModel", function() {
   });
 
   describe("when initialized, ", function() {
+    var obs;
+    beforeEach(function() {
+      obs = model.getObservables();
+    })
+    it("should initialize x-y coordinates to zero", function() {
+      expect(obs.x).toEqual(0);
+      expect(obs.y).toEqual(0);
+    });
+    it("should initizlie hits counter to zero", function() {
+      expect(obs.hits).toEqual(0);
+    });
+    it("should initialize total points counter to zero", function() {
+      expect(obs.totalPoints).toEqual(0);
+    });
+    it("should initialize hit flag to false", function() {
+      expect(obs.isHit).toEqual(false);
+    });
 
     it("should initialize radius to user's value", function() {
       expect(model.getParameters().radius).toEqual(radius);
     });
-    it("should initialize x-y coordinates to zero", function() {
-      var x = model.getObservables().x,
-          y = model.getObservables().y;
-      expect(x).toEqual(0);
-      expect(y).toEqual(0);
-    });
+
+
   });
 
 });
