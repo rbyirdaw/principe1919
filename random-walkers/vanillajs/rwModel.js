@@ -116,9 +116,8 @@
         rMSD: undefined,
         xRMSD: undefined,
         yRMSD: undefined,
-        rRMSD: undefined,
-
-      }
+        rRMSD: undefined
+      };
 
       _totalSteps++;
 
