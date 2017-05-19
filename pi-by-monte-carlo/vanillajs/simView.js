@@ -1,7 +1,7 @@
 
 (function(window) {
 
-  function SimView() {  
+  function SimView() {
 
     this.canvas = document.querySelector("[title='simCanvas']");
     this.ctx = this.canvas.getContext("2d");
@@ -26,14 +26,13 @@
 
     if (action === 'startStop') {
       this.startStop.addEventListener("click", function() {
-        console.log("StartStop: "+this.value);        
         eveHandler(this.value);
-        (this.value === 'Start') ? 
+        (this.value === 'Start') ?
             self.startStop.value = 'Stop': self.startStop.value = "Start";
 
       });
     } else if (action === 'clear') {
-      this.clear.addEventListener("click", function() {     
+      this.clear.addEventListener("click", function() {
         eveHandler();
       });
     }
@@ -61,7 +60,7 @@
 //=============================================================================
 
   SimView.prototype.updateCanvas = function(pointSet) {
-  
+
     for (i = 0; i < pointSet.length; i++) {
       this.drawPoint(pointSet[i].x, pointSet[i].y, pointSet[i].pointColor);
     }
@@ -116,7 +115,7 @@
       this.obsTable[obsName].innerHTML = "";
     }
 
-  }
+  };
 
 //=============================================================================
 
@@ -124,5 +123,3 @@
   window.mcPiApp.View = SimView;
 
 })(window);
-
-

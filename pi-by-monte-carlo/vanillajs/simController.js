@@ -2,15 +2,15 @@
 (function(window) {
 
   function SimController(simModel, simView) {
-    
+
     var self = this,
         arcParam;
-    
+
     this.simModel = simModel;
     this.simView = simView;
 
     this.simRunning = false;
-    this.intervalId = undefined;
+    this.intervalId;
 
     this.simView.setListener('startStop', function(val) {
       if (val === 'Start') {
@@ -38,7 +38,7 @@
     obs = self.simModel.getObservables();
     obs.isHit === true ? pointColor = "#77c1c7" : pointColor = "#ff9900";
 
-    self.simView.updateCanvas([{x: obs.x, y:obs.y, pointColor: pointColor}]);
+    self.simView.updateCanvas([{x: obs.x, y: obs.y, pointColor: pointColor}]);
 
     self.simView.updateObservables(obs);
 
@@ -57,6 +57,7 @@
 
     } else {
       //sim is already running
+      console.log("Simulation already running. Interval id "+this.intervalId);
     }
 
   };
@@ -72,6 +73,7 @@
 
     } else {
       //sim is not running
+      console.log("Simulation not running. Interval id "+this.intervalId);      
     }
 
   };
@@ -79,10 +81,10 @@
 //=============================================================================
 
   SimController.prototype.initSim = function() {
-    
+
     var arcParam = {
       x: 0,
-      y: 0, 
+      y: 0,
       arcRadius: this.simModel.getRadius(),
       startAng: 0,
       endAng: (3/2)*Math.PI,
@@ -98,7 +100,6 @@
 //=============================================================================
 
   window.mcPiApp = window.mcPiApp || {};
-  window.mcPiApp.Controller = SimController;  
+  window.mcPiApp.Controller = SimController;
 
 })(window);
-
