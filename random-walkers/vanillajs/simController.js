@@ -9,7 +9,7 @@
     this.simView = simView;
 
     this.simRunning = false;
-    this.intervalId = undefined;
+    this.intervalId;
 
     this.simView.setListener('startStop', function(val) {
       if (val === 'Start') {
@@ -63,10 +63,8 @@
 
   SimController.prototype.stopSim  = function() {
     if (this.simRunning) {
-
        clearInterval(this.intervalId);
        this.simRunning = false;
-
      }
   };
 
