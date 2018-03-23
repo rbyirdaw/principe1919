@@ -3,10 +3,30 @@ angular.module("randomWalkersApp", [])
 
     $scope.rwModel = new RandomWalkModel(200, 250, 150);
     $scope.simRunning = false;
+    $scope.totalSteps = $scope.rwModel.totalSteps;
+
+    var intervalId;
 
     $scope.initSim = function() {
       $scope.rwModel.init();
     };
+
+	  $scope.startStopSim = function() {
+		
+      if ($scope.simRunning) {
+        $scope.simRunning = false;
+        $interval.cancel(intervalId);
+        intervalId = undefined;
+  
+      } else {
+        $scope.simRunning = true;
+        intervalId = $interval(function() {
+
+        }, 0);
+      }
+    };
+
+
 
   })
   .directive("simCanvas", function() {
