@@ -1,26 +1,29 @@
-<!DOCTYPE html>
-
+<!doctype HTML>
 <html ng-app="randomWalkersApp">
   <head>
     <title>Random Walkers</title>
-    <link rel="stylesheet" href="../stylesheets/sim.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script> 
+    <link rel="stylesheet" href="../../stylesheets/sim.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="random-walkers-app.js"></script>    
   </head>
 
-  <body ng-controller="RandomWalkersCtrl">
+  <body>
     <header>
-      <h2 style="text-align: center;">Random Walkers</h2>
+      <h2>Random Walkers</h2>
     </header>
 
     <section class="sim-holder">
+      <canvas title="simCanvas" width="500px" height="300px">
+        canvas space
+      </canvas>
+    </section>
 
-      <sim-canvas class="sim-canvas"></sim-canvas>
+    <section class="sim-controls">
+      <input type="button" class="btn-style" value="Start" title="startStop">
+      <input type="button" class="btn-style" value="Clear" title="clear">
+    </section>
 
-      <div class="sim-controls">
-        <input type="button" class="btn-style" value="StrStp">
-        <input type="button" class="btn-style" value="Clear">
-      </div>
-
+    <section>
       <table class="sim-results">
         <tr>
           <th></th>
@@ -29,40 +32,36 @@
           <th class="th-row">r</th>
         </tr>
         <tr>
-          <th>Mean Displacement</th>
-          <td>mean x</td>
-          <td>mean y</td>
-          <td>mean r</td>
+          <th>Mean displacement</th>
+          <td title="xMean"></td>
+          <td title="yMean"></td>
+          <td title="rMean"></td>
         </tr>
         <tr>
-          <th>Mean Square Distance</th>
-          <td>mean xx</td>
-          <td>mean yy</td>
-          <td>mean rr</td>
+          <th>Mean square distance</th>
+          <td title="xMSD"></td>
+          <td title="yMSD"></td>
+          <td title="rMSD"></td>
         </tr>
         <tr>
-          <th>Root Mean Square Distance</th>
-          <td>r mean xx</td>
-          <td>r mean yy</td>
-          <td>r mean rr</td>
+          <th>Root mean square distance</th>
+          <td title="xRMSD"></td>
+          <td title="yRMSD"></td>
+          <td title="rRMSD"></td>
         </tr>
-
         <tr><td class="table-break" colspan="4"></td></tr>
         <tr>
-          <th>Total Steps</th>
-          <td>total steps</td>
+          <th>Total steps</th>
+          <td title="totalSteps"></td>
         </tr>
         <tr>
-          <th>Steps * Step Size</th>
-          <td>steps*stepSize</td>
+          <th>Steps*step size</th>
+          <td title="stepsByStepSize"></td>
         </tr>
       </table>
-
-
     </section>
+
 
   </body>
 
 </html>
-
-
