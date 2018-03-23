@@ -4,19 +4,16 @@
     <title>Random Walkers</title>
     <link rel="stylesheet" href="../../stylesheets/sim.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="rw-model.js"></script>    
     <script src="random-walkers-app.js"></script>    
   </head>
 
-  <body>
+  <body ng-controller="RandomWalkersCtrl">
     <header>
       <h2>Random Walkers</h2>
     </header>
 
-    <section class="sim-holder">
-      <canvas title="simCanvas" width="500px" height="300px">
-        canvas space
-      </canvas>
-    </section>
+    <sim-canvas class="sim-canvas"> </sim-canvas>
 
     <section class="sim-controls">
       <input type="button" class="btn-style" value="Start" title="startStop">
