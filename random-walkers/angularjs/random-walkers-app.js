@@ -26,6 +26,12 @@ angular.module("randomWalkersApp", [])
       }
     };
 
+    $scope.clearSim = function() {
+      //clear values
+
+      $scope.startStopSim();
+    };
+
 
 
   })
