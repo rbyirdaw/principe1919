@@ -20,5 +20,17 @@ class RandomWalkModel {
   getParameters() {
     return {numParticles: this.numParticles};
   }
-  
+
+  getObservables() {
+    return this.obs;
+  }
+
+  getRandomCoord(lowerBound, upperBound) {
+    return Math.floor(Math.random() * (upperBound - lowerBound)) + lowerBound;
+  }
+
+  stepSim() {
+    
+  }
+
 }
