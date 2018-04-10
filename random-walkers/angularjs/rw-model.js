@@ -25,6 +25,10 @@ class RandomWalkModel {
     return this.obs;
   }
 
+  getTotalSteps() {
+    return this.totalSteps;
+  }
+
   getRandomCoord(lowerBound, upperBound) {
     return Math.floor(Math.random() * (upperBound - lowerBound)) + lowerBound;
   }
@@ -55,7 +59,7 @@ class RandomWalkModel {
 
     this.totalSteps++;
 
-    for (i = 0; i < this.numParticles; i++) {
+    for (var i = 0; i < this.numParticles; i++) {
       Math.random() < 0.5 ? delX = -1 : delX = 1;
       Math.random() < 0.5 ? delY = -1 : delY = 1;
 
@@ -91,7 +95,7 @@ class RandomWalkModel {
 
     this.obs.totalSteps = this.totalSteps;
     this.obs.stepsByStepSize = Math.sqrt(this.totalSteps).toFixed(3);
-    };
+
   }
 
 }

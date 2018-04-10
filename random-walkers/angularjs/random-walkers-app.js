@@ -3,7 +3,8 @@ angular.module("randomWalkersApp", [])
 
     $scope.rwModel = new RandomWalkModel(200, 250, 150);
     $scope.simRunning = false;
-    $scope.totalSteps = $scope.rwModel.totalSteps;
+    $scope.obs;
+    $scope.totalSteps;
 
     var intervalId;
 
@@ -20,9 +21,8 @@ angular.module("randomWalkersApp", [])
   
       } else {
         $scope.simRunning = true;
-        intervalId = $interval(function() {
-
-        }, 0);
+        $scope.rwModel.init();      
+        intervalId = $interval($scope.stepSim, 25);
       }
     };
 
@@ -31,6 +31,14 @@ angular.module("randomWalkersApp", [])
 
       $scope.startStopSim();
     };
+
+    $scope.stepSim = function() {
+      $scope.rwModel.stepSim();
+      $scope.obs = $scope.rwModel.getObservables();
+      $scope.totalSteps = $scope.rwModel.getTotalSteps();
+
+      console.log($scope.totalSteps);
+    }
 
 
 

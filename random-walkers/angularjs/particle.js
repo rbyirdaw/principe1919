@@ -29,8 +29,8 @@ class Particle {
   }
 
   updateSqDist() {
-    this.xSqDist = Math.pow(xDist, 2);
-    this.ySqDist = Math.pow(yDist, 2);
+    this.xSqDist = Math.pow(this.xDist, 2);
+    this.ySqDist = Math.pow(this.yDist, 2);
     this.rSqDist = this.xSqDist + this.ySqDist;
   }
 
