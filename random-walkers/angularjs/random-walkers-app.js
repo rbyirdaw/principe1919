@@ -46,8 +46,8 @@ angular.module("randomWalkersApp", [])
   .directive("simCanvas", function() {
     var canvasH, 
         ctx,
-        canvasWidth,
-        canvasHeight;
+        canvasWidth = 500,
+        canvasHeight = 300;
 
     function clearCanvas() {
       ctx.clearRect(0, 0, canvasWidth, canvasHeight);
@@ -80,7 +80,7 @@ angular.module("randomWalkersApp", [])
     }
 
     function link(scope, element, attrs) {
-      element.append(angular.element("<canvas width='500' height='300'>"));
+      element.append(angular.element("<canvas width='" + canvasWidth + "' height='" + canvasHeight + "'>"));
       canvasH = element.find("canvas");
       ctx = canvasH[0].getContext("2d");
       ctx.strokeStyle = "tomato";
@@ -91,6 +91,7 @@ angular.module("randomWalkersApp", [])
       
       scope.$watch(watcherFunc, function(newValue, oldValue) {
         var particles = scope.rwModel.particles;
+        clearCanvas();
         updateCanvas(particles);
       });
 
