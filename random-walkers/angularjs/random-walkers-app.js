@@ -44,13 +44,59 @@ angular.module("randomWalkersApp", [])
 
   })
   .directive("simCanvas", function() {
-    var canvasH, ctx;
+    var canvasH, 
+        ctx,
+        canvasWidth,
+        canvasHeight;
+
+    function clearCanvas() {
+      ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+    }
+
+    function updateCanvas(particles) {
+ 
+      for (var i = 0; i < particles.length; i++) {
+        var dispVec = particles[i].getDisplacement();
+        drawPoint(dispVec.x, dispVec.y);
+      }
+    }
+
+    function drawPoint(x, y) {
+      if (x < 0) {
+        x = canvasWidth - 10;
+      } else if (x > canvasWidth) {
+        x = 10;
+      }
+      if (y < 0) {
+          y = canvasHeight - 10;
+      } else if (y > canvasHeight) {
+        y = 10;
+      }
+  
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+      ctx.lineTo(x+1, y+1);
+      ctx.stroke();
+    }
 
     function link(scope, element, attrs) {
       element.append(angular.element("<canvas width='500' height='300'>"));
       canvasH = element.find("canvas");
-      ctx = canvasH[0].getContext("2d");      
+      ctx = canvasH[0].getContext("2d");
+      ctx.strokeStyle = "tomato";
+      
+      var watcherFunc = function() {
+        return scope.totalSteps;
+      }
+      
+      scope.$watch(watcherFunc, function(newValue, oldValue) {
+        var particles = scope.rwModel.particles;
+        updateCanvas(particles);
+      });
+
     } // link
+
+
 
     return {
       link: link
