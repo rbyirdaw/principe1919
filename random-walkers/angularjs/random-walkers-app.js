@@ -3,8 +3,8 @@ angular.module("randomWalkersApp", [])
 
     $scope.rwModel = new RandomWalkModel(200, 250, 150);
     $scope.simRunning = false;
-    $scope.obs;
-    $scope.totalSteps;
+    $scope.obs = {};
+    $scope.totalSteps = 0;
 
     var intervalId;
 
@@ -28,8 +28,7 @@ angular.module("randomWalkersApp", [])
 
     $scope.clearSim = function() {
       //clear values
-
-      $scope.startStopSim();
+      $scope.totalSteps = 0;
     };
 
     $scope.stepSim = function() {
@@ -53,11 +52,10 @@ angular.module("randomWalkersApp", [])
       ctx.clearRect(0, 0, canvasWidth, canvasHeight);
     }
 
-    function updateCanvas(particles) {
+    function updateCanvas(pointSet) {
  
-      for (var i = 0; i < particles.length; i++) {
-        var dispVec = particles[i].getDisplacement();
-        drawPoint(dispVec.x, dispVec.y);
+      for (var i = 0; i < pointSet.length; i++) {        
+        drawPoint(pointSet[i].x, pointSet[i].y);
       }
     }
 
@@ -90,9 +88,13 @@ angular.module("randomWalkersApp", [])
       }
       
       scope.$watch(watcherFunc, function(newValue, oldValue) {
-        var particles = scope.rwModel.particles;
-        clearCanvas();
-        updateCanvas(particles);
+        if ((newValue === 0 ) && (oldValue > 0) ) {
+          clearCanvas();
+          
+        } else if (newValue > oldValue) {
+          clearCanvas();
+          updateCanvas(scope.obs.pointSet);
+        }
       });
 
     } // link

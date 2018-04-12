@@ -18,7 +18,7 @@
 
     <section class="sim-controls">
       <input value="{{simRunning ? 'Stop' : 'Start'}}" ng-click="startStopSim()" type="button" class="btn-style" title="startStop">
-      <input ng-click="clearSim()" type="button" class="btn-style" value="Clear" title="clear">
+      <input ng-disabled="simRunning" ng-click="clearSim()" type="button" class="btn-style" value="Clear" title="clear">
     </section>
 
     <section>
