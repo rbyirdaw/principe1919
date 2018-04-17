@@ -4,7 +4,7 @@ angular.module("randomWalkersApp", [])
     $scope.rwModel = new RandomWalkModel(200, 250, 150);
     $scope.simRunning = false;
     $scope.obs = {};
-    $scope.totalSteps = 0;
+    $scope.totalSteps;
 
     var intervalId;
 
@@ -28,15 +28,14 @@ angular.module("randomWalkersApp", [])
 
     $scope.clearSim = function() {
       //clear values
-      $scope.totalSteps = 0;
+      $scope.totalSteps = undefined;
+      $scope.obs = {};
     };
 
     $scope.stepSim = function() {
       $scope.rwModel.stepSim();
       $scope.obs = $scope.rwModel.getObservables();
       $scope.totalSteps = $scope.rwModel.getTotalSteps();
-
-      console.log($scope.totalSteps);
     }
 
 
@@ -88,7 +87,7 @@ angular.module("randomWalkersApp", [])
       }
       
       scope.$watch(watcherFunc, function(newValue, oldValue) {
-        if ((newValue === 0 ) && (oldValue > 0) ) {
+        if ((newValue === 0 || newValue === undefined) && (oldValue > 0) ) {
           clearCanvas();
           
         } else if (newValue > oldValue) {
