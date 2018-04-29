@@ -1,0 +1,56 @@
+/*Plate*/
+.plate{
+	position: relative;
+	top: 0;
+	left: 0;
+	
+	min-height: 218px;
+	
+	width: 250px;
+	
+	margin: 0 auto;
+	/*border: solid 2px #e3738e;*/
+	border: solid 2px #ddd;
+	background-color: #eee;	
+}
+.plate-index{
+	display: inline-block;
+	position: relative;
+	top: 0;
+	left: 0;
+	
+	width: 48px;
+	height: 44px;
+	
+	border-right: solid 2px #ddd;
+	border-bottom: solid 2px #ddd;
+	background-color: white;
+	
+	font-size: 28px;
+	font-weight: 800;
+	font-family: sans-serif;
+	color: #e3738e;
+	text-align: center;
+	
+	margin-bottom: 15px;
+}
+
+.plate-footer{
+	position: absolute;
+	bottom: 0;
+	height: 30px;
+	width: 100%;
+	
+	border-top: solid 2px #ddd;
+	
+	width: 100%;
+	background-color: #ddd;	
+	color: #333;
+	text-align: center;	
+}
+.plate-footer a{
+
+	font-weight: 600;	
+	font-size: 18px;
+	letter-spacing: 2px;
+}

@@ -1,59 +1,159 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-us">
-  <head>
-    <meta charset="UTF-8">
+	<head>
+		<meta charset="utf-8">
+
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
     <title>Principe1919 by rbyirdaw</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+	
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+		
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->	
 
-  </head>
-  <body>
-    <section class="page-header">
-      <h1 class="project-name">Principe1919</h1>
-      <h2 class="project-tagline">On the 29th of May, 1919, on the island of Principe, Albert Einstein's theory of general relativity was put to the test for the first time. Its predictions were subsequently confirmed to be correct. An experimental verification is the true test of a scientific concept. It can also be the ultimate demonstration of a concept. The web apps in this repository were created for this very purpose - for the illustration and demonstration of the many wonderful scientific and mathematical concepts.</h2>
-      <a href="https://github.com/rbyirdaw/principe1919" class="btn">View on GitHub</a>
-      <a href="https://github.com/rbyirdaw/principe1919/zipball/master" class="btn">Download .zip</a>
-      <a href="https://github.com/rbyirdaw/principe1919/tarball/master" class="btn">Download .tar.gz</a>
-    </section>
+		<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Oleo+Script' rel='stylesheet' type='text/css'>		
+		<link rel="stylesheet" href="stylesheets/principe1919-main.css">		
+		<link rel="stylesheet" href="stylesheets/accents.css">
+	</head>
+	
+	<body>
+		<nav class="navbar navbar-default">
+			<div class="container-fluid main-nav-holder">
+				
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="#">
+							<div class="brand-style">Principe1919</div>
+						</a>
+					</div>
+					<div class="collapse navbar-collapse" id="main-nav">
+						<ul class="nav navbar-nav navbar-right">
+							<!--li><a href="#sections">Sections</a><li-->
+							<li><a href="https://github.com/rbyirdaw/principe1919">View on GitHub</a><li>
+						</ul>
+					</div>		
+					
+			</div>
+		</nav>
+		<!--hero-->
+		<section class="jumbotron">
+			<div class="jumbo-box">
+				<div class="quote-box">
+					<div class="main-quote">"What I cannot create, I do not understand."</div>
+					<div class="main-quote-cite">Richard Phillips Feynman</div>
+				</div>
+			</div>
+		</section>
+		
+		<section class="container-fluid">
+			<!--div class="intro-wrapper"-->
+				<p class="intro-text">
+					On the 29<sup>th</sup> of May, 1919, on the island of Principe, Albert Einstein's theory of
+					general relativity was put to the test for the first time.  Its predictions were subsequently
+					confirmed to be correct.  An experimental verification is the true test of a scientific concept.  It
+					can also be the ultimate demonstration of a concept. This site was built for this very purpose - 
+					for the illustration and demonstration of the many wonderful scientific and mathematical concepts.
+				<br>
+					Select a topic from below to start.
+				</p>
+			<!--/div-->
+		</section>
+		
+		<section class="container section-holder-main">			
+			<section class="row">
+				<!--div class="row"-->
+					<div class="col-md-4">
+						<div class="plate">
+							<div class="plate-index">01</div>
+							<header class="section-header">
+								<a href="">
+									The Monte Carlo Method
+								</a>
+							</header>
+							<a href="">
+								<section class="section-teaser">
+									An introduction.
+								</section>
+							</a>
+							<div class="plate-footer">
+								<a href="">Coming soon</a>
+							</div>
+						</div>
+					</div>				
+					<div class="col-md-4">
+						<div class="plate">
+							<div class="plate-index">02</div>
+							<header class="section-header">
+								<a href="pi-by-monte-carlo/vanillajs">Pi by Monte Carlo</a>
+							</header>
+							<a href="pi-by-monte-carlo.html">
+								<section class="section-teaser">
+									A demonstration of the Monte Carlo method.
+								</section>
+							</a>
+							<div class="plate-footer">
+								<a href="pi-by-monte-carlo.html">Start</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="plate">
+							<div class="plate-index">03</div>						
+							<header class="section-header">
+								<a href="random-walkers/vanillajs" >Random Walkers</a>
+							</header>
+							<a href="random-walkers/vanillajs" >
+								<section class="section-teaser">							
+									Interesting properties of the random walk model.
+								</section>
+							</a>			
+							<div class="plate-footer">
+								<a href="random-walkers/vanillajs" >Start</a>
+							</div>
+						</div>
+					</div>
+				<!--/div-->
 
-    <section class="main-content">
+			</section>
+		</section>
+		
 
-    <h2><a id="list-of-demos" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>List of Demonstrations</h2>
-	<hr>
-	<article >
-	  <h3><strong><a href="pi-by-monte-carlo/vanillajs" style="text-decoration: underline; ">Pi by Monte Carlo</a></strong></h3>
-	  <p>A simulation that uses the Monte Carlo method to determine the value of pi.
-          <br>
-           View source by implementation:
-           <a href="https://github.com/rbyirdaw/principe1919/tree/master/pi-by-monte-carlo/vanillajs">Vanilla JS </a> |
-           <a href="https://github.com/rbyirdaw/principe1919/tree/master/pi-by-monte-carlo/angularjs">AngularJS </a>
-    </p>
-  </article>
+		<footer class="main-footer-holder">
+			<div class="main-footer">
+				<div class="main-footer-cr">
+					<span class="site-footer-owner"><a href="https://github.com/rbyirdaw/principe1919">Principe1919</a> is maintained by <a href="https://github.com/rbyirdaw">rbyirdaw</a>.</span>
+				</div>
+				<nav class="footer-nav">
+					<!--a href="#">Sections</a-->
+					<a href="https://github.com/rbyirdaw/principe1919">View on GitHub</a>
+				</nav>
+			</div>
+		</footer>		
+	
+	
+	<!-- Bootstrap core JavaScript ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>		
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	<!-- Need to get the file if want to use this line. Is there direct line?
+		<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script -->
+	
+	</body>
 
-	<article >
-	  <h3><strong><a href="random-walkers/vanillajs" style="text-decoration: underline; ">Random Walkers</a></strong></h3>
-	  <p>A two dimensional random walk model implemented using the Monte Carlo method.
-      <br>
-       View source by implementation:
-       <a href="https://github.com/rbyirdaw/principe1919/tree/master/random-walkers/vanillajs">Vanilla JS </a> |
-       <a href="https://github.com/rbyirdaw/principe1919/tree/master/random-walkers/angularjs">AngularJS </a>
-    </p>
-    </article>
-
-
-
-
-      <footer class="site-footer">
-        <span class="site-footer-owner"><a href="https://github.com/rbyirdaw/principe1919">Principe1919</a> is maintained by <a href="https://github.com/rbyirdaw">rbyirdaw</a>.</span>
-
-        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
-      </footer>
-
-    </section>
-
-
-  </body>
 </html>

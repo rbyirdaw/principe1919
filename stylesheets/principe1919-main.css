@@ -1,0 +1,204 @@
+a, a:hover{
+	text-decoration: none;
+	color: inherit;
+}
+
+/*Restyle navbar*/
+.navbar-default, .navbar-toggle{
+	border: none;
+}
+.navbar-default{
+	background: none;
+	box-shadow: none;
+}
+.main-nav-holder{
+	/*padding: 15px 200px;*/
+	width: 80%;
+	margin: 0 auto;
+	/*border: 1px solid red;*/
+}
+.brand-style{
+	font-size: 34px;
+	font-family: "Oleo Script", cursive;
+	color: #8ab2bb;
+}
+
+/*hero*/
+.jumbotron{
+	background-image: url("../assets/principe1919-main.jpg");	
+	background-size: cover;
+}
+.jumbo-box{
+	height: 250px;
+}
+.main-quote{
+	font-size: 42px;
+	font-style: Arial;
+	font-weight: 200;
+	color: #ddd;
+	
+	width: 100%;
+	
+	/*border: 1px solid red;*/
+}
+.main-quote-cite{
+	font-size: 18px;
+	font-style: italic;
+	color: #ddd;
+	margin: 10px 0;
+}
+.main-quote,
+.main-quote-cite{
+	text-align: center;
+}
+.quote-box{
+	/*border: dashed 1px green;	*/
+}
+
+/*sections*/
+/*.col-md-6{
+	border: dotted green 2px;
+}
+*/
+.section-holder-main{
+	/*max-width: 730px;*/
+	width: 80%;
+	margin: 0 auto;
+
+	font-family: "Source Sans Pro", sans-serif;
+	
+	/*border: blue solid 1px;*/	
+}
+/*.section-holder{
+	max-width: 730px;
+	margin: 0 auto;
+	border: dashed 2px blue;
+}
+
+.intro-wrapper{	
+	width: 100%;
+}
+*/
+.intro-text{
+	margin: 0 auto 15px auto;
+	width: 60%;
+	
+	color: #333;
+	
+	padding: 5px 10px 25px 10px;
+	font-family: "Source Sans Pro", sans-serif;
+	font-size: 18px;
+	font-weight: thin;
+	text-align: center;
+}
+
+.section-header{
+	font-size: 24px;
+	font-weight: 800;
+	font-style: italic;
+	color: #333;
+	margin-top: 10px;
+	text-align: center;
+	
+}
+.section-teaser{
+	/*border: 1px solid green;*/
+	padding: 15px 15px;
+	text-align: center;
+	font-size: 18px;
+}
+
+/*main footer*/
+.main-footer-holder{
+	position: absolute;
+	left: 0;
+	bottom: 0px; 
+	width: 100%;
+	padding: 5px 0px;
+	
+	background-color: #303f4e;
+
+	/*border: 1px solid red;*/
+}
+.main-footer{
+	padding: 0 10px;
+	color: #8ab2bb;
+	margin: 0 auto;
+	width: 80%;
+}
+.main-footer-cr{
+	float: left;
+	font-size: 12px;
+}
+.footer-nav a{
+	color: inherit;
+	padding: 0 5px;
+	text-decoration: none;
+}
+.footer-nav{
+	float: right;
+	font-size: 12px;
+}
+
+/*Contact*/
+
+.contact-wrapper{
+	width: 45%;
+	margin: 0px auto 5px auto;
+	font-family: "Source Sans Pro", sans-serif;
+	font-size: 20px;
+	
+}
+.send-success,
+.send-fail{
+	font-size: 14px;
+	margin-bottom: 10px;
+}
+.send-success{
+	color: #888;
+}
+.send-fail,
+.send-fail-ind{
+	color: red;
+}
+.send-fail-ind{
+	margin: 0;
+	font-size: 12px;
+}
+
+.form-style{
+	padding: 15px 25px 25px 25px;	
+}
+input,textarea{
+	width: 100%;
+	background: #fcfcfc;
+	margin-bottom: 25px;
+	color: #888;
+}
+#submitBtn{
+	width: 40%;
+	margin: 0 auto;
+	color: #888;
+	background: #ddd;
+}
+textarea{
+	height: 150px;
+}
+input,textarea,#submitBtn{
+	display: block;
+	border: 1px solid #ddd;	
+	border-radius: 5px;
+	padding: 10px 15px;
+}
+::-webkit-input-placeholder{
+	color: #c9c9c9;
+}
+:-moz-placeholder{
+	color: #c9c9c9;
+}
+::-moz-placeholder{
+	color: #c9c9c9;
+}
+:-ms-input-placeholder{
+	color: #c9c9c9;
+}
