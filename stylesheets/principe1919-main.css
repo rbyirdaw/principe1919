@@ -63,7 +63,7 @@ a, a:hover{
 .section-holder-main{
 	/*max-width: 730px;*/
 	width: 80%;
-	margin: 0 auto;
+	margin: 0 auto 2rem 0;
 
 	font-family: "Source Sans Pro", sans-serif;
 	
@@ -110,7 +110,7 @@ a, a:hover{
 
 /*main footer*/
 .main-footer-holder{
-	position: absolute;
+	position: fixed;
 	left: 0;
 	bottom: 0px; 
 	width: 100%;
