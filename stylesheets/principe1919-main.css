@@ -60,25 +60,14 @@ a, a:hover{
 	border: dotted green 2px;
 }
 */
-.section-holder-main{
-	/*max-width: 730px;*/
-	width: 80%;
-	margin: 0 auto 2rem 0;
-
+.section-holder-main {
 	font-family: "Source Sans Pro", sans-serif;
-	
-	/*border: blue solid 1px;*/	
 }
-/*.section-holder{
-	max-width: 730px;
-	margin: 0 auto;
-	border: dashed 2px blue;
+@media (max-width: 991px) {
+	.section-holder-main {
+		min-height: 800px;
+	}
 }
-
-.intro-wrapper{	
-	width: 100%;
-}
-*/
 .intro-text{
 	margin: 0 auto 15px auto;
 	width: 60%;
