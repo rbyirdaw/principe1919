@@ -1,0 +1,1 @@
+Random walk model implemented in AngularJS and vanilla JS.
