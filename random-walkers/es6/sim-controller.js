@@ -2,6 +2,7 @@
 class SimController {
 
   constructor(simModel, simView) {
+    let self = this;
     this.simModel = simModel;
     this.simView = simView;
 

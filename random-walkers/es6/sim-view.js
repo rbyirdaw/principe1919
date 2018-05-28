@@ -58,7 +58,7 @@ class SimView {
   //===========================================================================
   
   updateCanvas(pointSet) {
-    for (i = 0; i < pointSet.length; i++) {
+    for (let i = 0; i < pointSet.length; i++) {
       this.drawPoint(pointSet[i].x, pointSet[i].y);
     }
   }
@@ -93,7 +93,7 @@ class SimView {
   //===========================================================================
 
   updateObservables(obs) {
-
+    let obsName;
     for (obsName in this.obsTable) {
       this.obsTable[obsName].innerHTML = obs[obsName];
     }
@@ -102,7 +102,7 @@ class SimView {
   //===========================================================================
 
   clearObsTable() {
-
+    let obsName;
     for (obsName in this.obsTable) {
       this.obsTable[obsName].innerHTML = "";
     }
