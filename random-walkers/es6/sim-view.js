@@ -1,13 +1,13 @@
 
-(function(window) {
+class SimView {
 
-  function SimView() {
+  constructor() {
     this.canvas = document.querySelector("[title='simCanvas']");
     this.ctx = this.canvas.getContext("2d");
-
+  
     this.startStop = document.querySelector("[title='startStop']");
     this.clear = document.querySelector("[title='clear']");
-
+  
     this.obsTable = {
       xMean: document.querySelector("[title='xMean']"),
       yMean: document.querySelector("[title='yMean']"),
@@ -20,14 +20,14 @@
       rRMSD: document.querySelector("[title='rRMSD']"),
       totalSteps: document.querySelector("[title='totalSteps']"),
       stepsByStepSize: document.querySelector("[title='stepsByStepSize']")
-    }
+    };
   }
 
   //============================================================================
-  SimView.prototype.setListener = function(action, eveHandler) {
+  setListener(action, eveHandler) {
 
     var self = this;
-
+  
     if (action === 'startStop') {
       this.startStop.addEventListener("click", function() {
         eveHandler(this.value);
@@ -39,39 +39,39 @@
         eveHandler();
       });
     }
-
-  };
-
+  
+  }
+  
   //============================================================================
-  SimView.prototype.init = function() {
+  init() {
 
     this.clearCanvas();
     this.clearObsTable();
 
-  };
-
-  //===========================================================================
-  SimView.prototype.clearCanvas = function() {
-     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
   }
-
+  
   //===========================================================================
-
-  SimView.prototype.updateCanvas = function(pointSet) {
+  clearCanvas() {
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+  }
+  
+  //===========================================================================
+  
+  updateCanvas(pointSet) {
     for (i = 0; i < pointSet.length; i++) {
       this.drawPoint(pointSet[i].x, pointSet[i].y);
     }
-  };
-
+  }
+  
   //===========================================================================
 
-  SimView.prototype.setStrokeColor = function(strokeColor) {
+  setStrokeColor(strokeColor) {
     this.ctx.strokeStyle = strokeColor;
-  };
-
+  }
+  
   //===========================================================================
 
-  SimView.prototype.drawPoint = function(x, y) {
+  drawPoint(x, y) {
 
     if (x < 0) {
       x = this.canvas.width - 10;
@@ -88,29 +88,24 @@
     this.ctx.moveTo(x, y);
     this.ctx.lineTo(x+1, y+1);
     this.ctx.stroke();
-  };
+  }
 
   //===========================================================================
 
-  SimView.prototype.updateObservables = function(obs) {
+  updateObservables(obs) {
 
     for (obsName in this.obsTable) {
       this.obsTable[obsName].innerHTML = obs[obsName];
     }
-  };
+  }
 
   //===========================================================================
 
-  SimView.prototype.clearObsTable = function() {
+  clearObsTable() {
 
     for (obsName in this.obsTable) {
       this.obsTable[obsName].innerHTML = "";
     }
-  };
+  }
 
-  //===========================================================================
-
-  window.rwApp = window.rwApp || {};
-  window.rwApp.View = SimView;
-
-})(window);
+}
