@@ -2,7 +2,7 @@ class MCpiModel {
     
   constructor(radius) {
 
-    this.this.radius = radius,
+    this.radius = radius,
     this.x;
     this.y;
     this.hits;
@@ -41,7 +41,7 @@ class MCpiModel {
   }
 
 //=============================================================================
-  isHit() {
+  pointInQuarterCircle() {
 
     return (Math.pow(this.x,2) + Math.pow(this.y,2) <= Math.pow(this.radius,2));
 
@@ -86,7 +86,7 @@ class MCpiModel {
     this.generatePoints();
     this.totalPoints++;
 
-    if (this.isHit()) {
+    if (this.pointInQuarterCircle()) {
       this.isHit = true;
       this.hits++;
       this.piByMC = 4*(this.hits/this.totalPoints);
